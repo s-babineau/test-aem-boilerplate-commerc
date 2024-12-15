@@ -5,7 +5,7 @@ export default async function decorate(block) {
   // eslint-disable-next-line import/no-absolute-path, import/no-unresolved
   await import('/scripts/widgets/search.js');
 
-  let { category, urlpath, type } = readBlockConfig(block);
+  const { category, urlpath, type } = readBlockConfig(block);
   block.textContent = '';
 
   const storeDetails = {
@@ -49,9 +49,13 @@ export default async function decorate(block) {
   if (type !== 'search') {
     storeDetails.config.categoryName = document.querySelector('.default-content-wrapper > h1')?.innerText;
     const a = window.location.pathname;
-    urlpath = a.substring(a.lastIndexOf('/') + 1, a.length);
-    storeDetails.config.currentCategoryId = '';
-    storeDetails.config.currentCategoryUrlPath = urlpath;
+    if (a) {
+      storeDetails.config.currentCategoryId = '';
+      storeDetails.config.currentCategoryUrlPath = a.substring(a.lastIndexOf('/') + 1, a.length);
+    } else {
+      storeDetails.config.currentCategoryId = category;
+      storeDetails.config.currentCategoryUrlPath = urlpath;
+    }
 
     // Enable enrichment
     block.dataset.category = category;
