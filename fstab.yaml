@@ -4,3 +4,4 @@ mountpoints:
 folders:
   /products/category-page/: /gear
   /products/: /products/default
+  /products/products-page/: /products/products-page

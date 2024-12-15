@@ -48,8 +48,9 @@ export default async function decorate(block) {
 
   if (type !== 'search') {
     storeDetails.config.categoryName = document.querySelector('.default-content-wrapper > h1')?.innerText;
-    storeDetails.config.currentCategoryId = category;
-    storeDetails.config.currentCategoryUrlPath = urlpath;
+    const a = window.location.pathname;
+    storeDetails.config.currentCategoryId = "";
+    storeDetails.config.currentCategoryUrlPath = a.substring(a.lastIndexOf('/')+1, a.length);
 
     // Enable enrichment
     block.dataset.category = category;
