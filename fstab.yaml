@@ -2,6 +2,5 @@ mountpoints:
   /: https://drive.google.com/drive/folders/1nF9tYn9j2wRu0NGQY7LnquUEGluypqXz
 
 folders:
-  /category-page/living-room/: /gear
-  /products/category-page/living-room/: /gear
+  /products/category-page/: /gear
   /products/: /products/default
